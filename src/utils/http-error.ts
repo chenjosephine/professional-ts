@@ -1,20 +1,20 @@
 /**
  * @enum {number}
  */
-export const HTTPErrorKind = {
-  Information: 100,
-  Success: 200,
-  Redirect: 300,
-  Client: 400,
-  Server: 500,
-};
+export enum HTTPErrorKind {
+  Information = 100,
+  Success = 200,
+  Redirect = 300,
+  Client = 400,
+  Server = 500,
+}
 
 /**
  *
  * @param {number} status
  * @return {HTTPErrorKind}
  */
-function determineKind(status) {
+function determineKind(status: number): HTTPErrorKind {
   if (status >= 100 && status < 200) return HTTPErrorKind.Information;
   else if (status < 300) return HTTPErrorKind.Success;
   else if (status < 400) return HTTPErrorKind.Redirect;
@@ -25,6 +25,7 @@ function determineKind(status) {
 
 /** @param {HTTPErrorKind} kind */
 export default class HTTPError extends Error {
+  kind;
   /**
    *
    * @param {Response} info
