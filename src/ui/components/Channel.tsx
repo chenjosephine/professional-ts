@@ -32,7 +32,7 @@ const Channel: React.FunctionComponent<any> = ({ channel }) => {
         className="py-4 flex-1 overflow-y-scroll channel-messages-list"
         role="list"
       >
-        {messages.map((m) => (
+        {messages.map((m: any) => (
           <ChannelMessage
             key={m.id}
             body={m.body}
